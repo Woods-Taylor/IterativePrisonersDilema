@@ -17,9 +17,14 @@ app._static_folder = os.path.abspath("website/")
 @app.route('/', methods=['GET'])
 def index():
     title = 'Create the input'
-    return render_template('prisoners.html',
+    return render_template('prisonerspg1.html',
                            title=title)
 
+@app.route('/game', methods=['GET'])
+def game():
+    title = 'Create the input'
+    return render_template('prisoners.html',
+                           title=title)
 
 @app.route('/senddata', methods = ['POST'])
 def post_javascript_data():
