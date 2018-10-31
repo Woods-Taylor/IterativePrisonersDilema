@@ -51,11 +51,11 @@ hr {
 <!--CONFESS AND KEEP QUIET BUTTONS-->
 <br>
 <!--Confess button and onclick function to add to counters-->
-<button class="button button1" id="demo"  onclick="myFunction2();confessDecision()" >Confess</button>
+<button class="button button1" id="demo"  onclick="Decision('B')" >Confess</button>
 <br>
 <br>
 <!--Quiet button and onclick functions to add to counters-->
-<button style="padding: 50px 108px;"class="button button2" id="demo3"  onclick= "myFunction2();quietDecision()">Keep Quiet</button>
+<button style="padding: 50px 108px;"class="button button2" id="demo3"  onclick= "Decision('S')">Keep Quiet</button>
 <br>
 <br>
 <button style="padding: 50px 108px;"class="button button2" id="demo3"  onclick= "sendData();">send</button>
@@ -88,31 +88,22 @@ hr {
 var count =0;
 var quiet =0;
 var confess=0;
+var history=[""];
 
-
-//Adding to keep quiet counter
-function quietDecision(){
-	quiet=quiet+1;
-	document.getElementById("quiet1").innerText = "Keep Quiet Counter: " +quiet;
-	
-}
-
-//Adding to confess counter 
-function confessDecision(){
-	confess=confess+1;
-	document.getElementById("confess1").innerText = "Confess Counter: " + confess;
-	
-}
-
-
-//Adding to total counter when on-click 
-function myFunction2() {
+function Decision(choice){
 	count = count+1;
-	
     document.getElementById("demo2").innerText = "Total Count: " +count;
-	document.getElementById("demo2").innerText = " Total Count: " +count;
-	
-	
+	if(choice=="B"){
+		confess=confess+1;
+		document.getElementById("confess1").innerText = "Confess Counter: " + confess;
+	}
+	if(choice=="S"){
+		quiet=quiet+1;
+		document.getElementById("quiet1").innerText = "Keep Quiet Counter: " +quiet;
+	}
+	history.push(choice);
+	console.log(history);
+
 }
 //Sending data to backend
 function sendData() {

@@ -44,7 +44,7 @@ def post_javascript_data():
             writer.writerow(data)
         csvfile.close()    
         print("done")
-       
+    return "Done"
 
 
 
