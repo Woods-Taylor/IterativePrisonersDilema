@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+.button {
+    background-color: #008CBA; /* BLUE */
+    border: none;
+    color: white;
+    padding: 50px 120px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 5px 6px;
+    cursor: pointer;
+	border-radius: 12px;
+	
+
+}
+.button1:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);}
+.button2:hover { padding: 50px 108px;
+ box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+ 
+}
+
+
+hr { 
+    display: block;
+    margin-top: 3.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: double;
+    border-width: 10px;
+} 
+
+</style>
+</head>
+
+<body>
+
+<!--Header-->
+
+<img src="https://banner2.kisspng.com/20180721/wtl/kisspng-columbus-state-university-columbus-state-cougars-w-back-of-head-5b5304b29ea070.2953801215321673466497.jpg" alt="CSU Logo" style="  width:200px;height:100px; position: fixed; right: 50px; top:0px;" >
+<h1 align="center" > Prisoner Number One</h1>
+<hr>
+
+
+<!--CONFESS AND KEEP QUIET BUTTONS-->
+<br>
+<!--Confess button and onclick function to add to counters-->
+<button class="button button1" id="demo"  onclick="myFunction2();confessDecision()" >Confess</button>
+<br>
+<br>
+<!--Quiet button and onclick functions to add to counters-->
+<button style="padding: 50px 108px;"class="button button2" id="demo3"  onclick= "myFunction2();quietDecision()">Keep Quiet</button>
+<br>
+<br>
+<button style="padding: 50px 108px;"class="button button2" id="demo3"  onclick= "sendData();">send</button>
+<!--DIV FOR COUNTER AND CURRENT PLAYER-->
+
+<div style="width: 20%; min-height: 50vh; background: #D3D3D3; position: fixed; left: 450px; top:150px; padding-left: 40px" >
+<p>Current Player: </p> 
+<div style="width: 100%; height: 50%; background: #D3D3D3;"   >
+
+<p id="demo2">Total Counter: </p>
+<p id= "quiet1">Keep Quiet Counter: </p>
+<p id="confess1">Confess Counter: </p>
+<p> Your move is: Hidden</p>
+</div>
+</div>
+
+
+<div style="width: 30%; min-height: 50vh; background: #D3D3D3; position: fixed; right: 90px; top:150px; " ><p align="center"><b> Rules:</b> </p>
+<ul style="list-style-type: disc">
+<!--bulleted list for rules of the game -->
+<li><p> If each player confesses, each of them will serve 2 years in prison.<p></li>
+<li><p> If one player confesses and the other remains silent, the player who confessed will be set free and the player who remained silent serves 3 years.</p></li>
+<li><p>If both player remain silent, both will serve 1 years.</p>
+
+</li></ul></div>
+
+
+<script>
+//Variables for counter
+var count =0;
+var quiet =0;
+var confess=0;
+
+
+//Adding to keep quiet counter
+function quietDecision(){
+	quiet=quiet+1;
+	document.getElementById("quiet1").innerText = "Keep Quiet Counter: " +quiet;
+	
+}
+
+//Adding to confess counter 
+function confessDecision(){
+	confess=confess+1;
+	document.getElementById("confess1").innerText = "Confess Counter: " + confess;
+	
+}
+
+
+//Adding to total counter when on-click 
+function myFunction2() {
+	count = count+1;
+	
+    document.getElementById("demo2").innerText = "Total Count: " +count;
+	document.getElementById("demo2").innerText = " Total Count: " +count;
+	
+	
+}
+//Sending data to backend
+function sendData() {
+    var xhr = new XMLHttpRequest();
+	xhr.open("POST", "/senddata", true);
+	xhr.setRequestHeader('Content-Type', 'application/json');
+	xhr.send(JSON.stringify({
+		count  :count,
+		quiet  :quiet,
+		confess:confess,
+		name:"alan"
+	}));
+  }
+</script>
+
+
+
+</body>
+</html>
