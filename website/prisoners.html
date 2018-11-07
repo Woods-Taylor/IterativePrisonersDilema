@@ -51,11 +51,11 @@ hr {
 <!--CONFESS AND KEEP QUIET BUTTONS-->
 <br>
 <!--Confess button and onclick function to add to counters-->
-<button class="button button1" id="demo"  onclick="Decision('B')" >Confess</button>
+<button class="button button1" id="demo"  onclick="myFunction2();confessDecision()" >Confess</button>
 <br>
 <br>
 <!--Quiet button and onclick functions to add to counters-->
-<button style="padding: 50px 108px;"class="button button2" id="demo3"  onclick= "Decision('S')">Keep Quiet</button>
+<button style="padding: 50px 108px;"class="button button2" id="demo3"  onclick= "myFunction2();quietDecision()">Keep Quiet</button>
 <br>
 <br>
 <button style="padding: 50px 108px;"class="button button2" id="demo3"  onclick= "sendData();">send</button>
@@ -68,7 +68,7 @@ hr {
 <p id="demo2">Total Counter: </p>
 <p id= "quiet1">Keep Quiet Counter: </p>
 <p id="confess1">Confess Counter: </p>
-<p> Your move is: Hidden</p>
+<p id="Opp_move"> Your opponent move is: Hidden</p>
 </div>
 </div>
 
@@ -88,22 +88,67 @@ hr {
 var count =0;
 var quiet =0;
 var confess=0;
-var history=new Array();
+var log=[];
+var Opponent_log=[];
+var Opponentindex=0;
+var CurrMove="None";
 
-function Decision(choice){
+
+//Adding to keep quiet counter
+function quietDecision(){
+	quiet=quiet+1;
+    document.getElementById("quiet1").innerText = "Keep Quiet Counter: " +quiet;
+	log.push('S');
+	Opponentindex+=1;
+	if ((count%2)==0){
+		Opponent_log.push('S');
+		}
+	else{
+		Opponent_log.push('B');
+	}
+	if(Opponent_log[Opponentindex] == 'B'){
+		CurrMove="Betray";
+		}else{
+		CurrMove="Stay Silent"
+	if(Opponent_log.length > 50){
+		document.getElementById("Opp_move").innerText = "Your Opponents Move: " +CurrMove;
+		}
+		
+	
+}
+
+}
+//Adding to confess counter 
+function confessDecision(){
+	confess=confess+1;
+	document.getElementById("confess1").innerText = "Confess Counter: " + confess;
+	log.push('B');
+	Opponentindex+=1;
+	if ((count%2)==0){
+		Opponent_log.push('S');
+		}
+	else{
+		Opponent_log.push('B');
+	}
+	if(Opponent_log[Opponentindex] == 'B'){
+		CurrMove="Betray";
+		}else{
+		CurrMove="Stay Silent"
+	if(Opponent_log.length > 50){
+		document.getElementById("Opp_move").innerText = "Your Opponents Move: " +CurrMove;
+		}
+}
+
+}
+
+//Adding to total counter when on-click 
+function myFunction2() {
 	count = count+1;
+	
     document.getElementById("demo2").innerText = "Total Count: " +count;
-	if(choice=="B"){
-		confess=confess+1;
-		document.getElementById("confess1").innerText = "Confess Counter: " + confess;
-	}
-	if(choice=="S"){
-		quiet=quiet+1;
-		document.getElementById("quiet1").innerText = "Keep Quiet Counter: " +quiet;
-	}
-	history.push(choice);
-	console.log(history);
-
+	document.getElementById("demo2").innerText = " Total Count: " +count;
+	
+	
 }
 //Sending data to backend
 function sendData() {
@@ -114,7 +159,7 @@ function sendData() {
 		count  :count,
 		quiet  :quiet,
 		confess:confess,
-		name:"alan"
+		log:log
 	}));
   }
 </script>
