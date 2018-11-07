@@ -69,6 +69,7 @@ hr {
 <p id= "quiet1">Keep Quiet Counter: </p>
 <p id="confess1">Confess Counter: </p>
 <p id="Opp_move"> Your opponent move is: Hidden</p>
+
 </div>
 </div>
 
@@ -99,23 +100,8 @@ function quietDecision(){
 	quiet=quiet+1;
     document.getElementById("quiet1").innerText = "Keep Quiet Counter: " +quiet;
 	log.push('S');
-	Opponentindex+=1;
-	if ((count%2)==0){
-		Opponent_log.push('S');
-		}
-	else{
-		Opponent_log.push('B');
-	}
-	if(Opponent_log[Opponentindex] == 'B'){
-		CurrMove="Betray";
-		}else{
-		CurrMove="Stay Silent"
-	if(Opponent_log.length > 50){
-		document.getElementById("Opp_move").innerText = "Your Opponents Move: " +CurrMove;
-		}
-		
+
 	
-}
 
 }
 //Adding to confess counter 
@@ -123,21 +109,8 @@ function confessDecision(){
 	confess=confess+1;
 	document.getElementById("confess1").innerText = "Confess Counter: " + confess;
 	log.push('B');
-	Opponentindex+=1;
-	if ((count%2)==0){
-		Opponent_log.push('S');
-		}
-	else{
-		Opponent_log.push('B');
-	}
-	if(Opponent_log[Opponentindex] == 'B'){
-		CurrMove="Betray";
-		}else{
-		CurrMove="Stay Silent"
-	if(Opponent_log.length > 50){
-		document.getElementById("Opp_move").innerText = "Your Opponents Move: " +CurrMove;
-		}
-}
+	
+	
 
 }
 
@@ -147,9 +120,30 @@ function myFunction2() {
 	
     document.getElementById("demo2").innerText = "Total Count: " +count;
 	document.getElementById("demo2").innerText = " Total Count: " +count;
+
+	if ((count%2)==0){
+		Opponent_log.push('S');
+		
+		}
+	else{
+		Opponent_log.push('B');
+		
+	}
+
+	
+	if(count>50){
+	if(Opponent_log[Opponentindex] == 'B'){
+		CurrMove="Betray";
+		Opponentindex+=1;
+		
+		}
+		else{CurrMove="Silent";
+		Opponentindex+=1;}
+		document.getElementById("Opp_move").innerText="Your opponent move is: "+CurrMove;
+	}
 	
 	
-}
+	}
 //Sending data to backend
 function sendData() {
     var xhr = new XMLHttpRequest();
@@ -161,7 +155,12 @@ function sendData() {
 		confess:confess,
 		log:log
 	}));
+	
+
   }
+  
+ 
+	
 </script>
 
 
