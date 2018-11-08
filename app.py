@@ -27,6 +27,7 @@ def game():
                            title=title)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 @app.route('/game1', methods=['GET'])
 def game():
@@ -35,6 +36,8 @@ def game():
                            title=title)                           
 
 >>>>>>> parent of f988274... fix
+=======
+>>>>>>> parent of bf621e5... new page
 @app.route('/senddata', methods = ['POST'])
 def post_javascript_data():
     data=request.data
