@@ -89,7 +89,7 @@ hr {
 <button class="button button2" style="padding: 50px 130px" id="demo3"  onclick= "myFunction2();quietDecision();Switch()">Keep Quiet</button>
 <br>
 <br>
-<button style="padding: 50px 130px; position: bottom; left: 500px; bottom: 100px;"class="button button3" id="demo3"  onclick= "sendData(); location.href='/game1'">Finish</button>
+<button style="padding: 50px 130px; position: bottom; left: 500px; bottom: 100px;"class="button button3" id="demo4"  onclick= "sendData(); location.href='/game1'">Finish</button>
 <!--DIV FOR COUNTER AND CURRENT PLAYER-->
 </div>
 
@@ -127,9 +127,15 @@ var turn="None";
 //Telling the user who is the current player
 function Switch(){
     document.getElementById("switch").innerText = "Current Player: Computer";
+	document.getElementByID("demo").disabled=True;
+	document.getElementByID("demo3").disabled=True;
+	document.getElementByID("demo4").disabled=True;
 }
 setInterval(function(){
     document.getElementById("switch").innerText = "Current Player: User";
+	document.getElementByID("demo").disabled=False;
+	document.getElementByID("demo3").disabled=False;
+	document.getElementByID("demo4").disabled=False;
 ;}
 ,4000);
 
