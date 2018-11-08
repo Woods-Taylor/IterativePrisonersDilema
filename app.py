@@ -26,24 +26,14 @@ def game():
     return render_template('prisoners.html',
                            title=title)
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 005d5e42e3756857f355b6113210b6b095b01866
-=======
+
 @app.route('/game1', methods=['GET'])
 def game1():
     title = 'Create the input'
     return render_template('prisonerspg2.html',
                            title=title)                           
 
->>>>>>> parent of f988274... fix
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of bf621e5... new page
->>>>>>> 005d5e42e3756857f355b6113210b6b095b01866
+
 @app.route('/senddata', methods = ['POST'])
 def post_javascript_data():
     data=request.data
