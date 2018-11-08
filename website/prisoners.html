@@ -41,7 +41,7 @@ hr {
     border-width: 10px;
 } 
 .button4 {
-    background-color: #008000; /* Green */
+    background-color: #008000; /* BLUE */
     border: none;
     color: white;
     padding: 20x 80x;
@@ -119,15 +119,13 @@ var log=[];
 var Opponent_log=[];
 var Opponentindex=0;
 var CurrMove="None";
-var turn="None";
-var turnflag=0; 
+var turn="None"; 
 
 //Telling the user who is the current player
 function Switch(){
     document.getElementById("switch").innerText = "Current Player: Computer";
 }
 setInterval(function(){
-	
     document.getElementById("switch").innerText = "Current Player: User";
 ;}
 ,4000);
@@ -144,11 +142,9 @@ function quietDecision(){
 }
 //Adding to confess counter 
 function confessDecision(){
-	if(document.getElementById("switch").innerText == "Current Player: User"{
-		confess=confess+1;
-		document.getElementById("confess1").innerText = "Confess Counter: " + confess;
-		log.push('B');
-	}
+	confess=confess+1;
+	document.getElementById("confess1").innerText = "Confess Counter: " + confess;
+	log.push('B');
 	
 	
 
