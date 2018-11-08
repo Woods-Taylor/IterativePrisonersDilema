@@ -48,25 +48,25 @@ hr {
 <!--Header-->
 
 
-<h1 align="center" > Prisoner Number One</h1>
+<h1 align="center" > Prisoner's Dilemma</h1>
 <hr>
 
 
 <!--CONFESS AND KEEP QUIET BUTTONS-->
 <br>
 <!--Confess button and onclick function to add to counters-->
-<button class="button button1" id="demo"  onclick="myFunction2();confessDecision()" >Confess</button>
+<button class="button button1" id="demo"  onclick="myFunction2();confessDecision();Switch()" >Confess</button>
 <br>
 <br>
 <!--Quiet button and onclick functions to add to counters-->
-<button style="padding: 50px 108px;"class="button button2" id="demo3"  onclick= "myFunction2();quietDecision()">Keep Quiet</button>
+<button style="padding: 50px 108px;"class="button button2" id="demo3"  onclick= "myFunction2();quietDecision();Switch()">Keep Quiet</button>
 <br>
 <br>
 <button style="padding: 50px 130px; position: bottom; left: 500px; bottom: 100px;"class="button button3" id="demo3"  onclick= "sendData();">Finish</button>
 <!--DIV FOR COUNTER AND CURRENT PLAYER-->
 
 <div style="width: 20%; min-height: 50vh; background: #D3D3D3; position: fixed; left: 450px; top:150px; padding-left: 40px" >
-<p>Current Player: </p> 
+<p id="switch">Current Player: User </p> 
 <div style="width: 100%; height: 50%; background: #D3D3D3;"   >
 
 <p id="demo2">Total Counter: </p>
@@ -97,6 +97,16 @@ var log=[];
 var Opponent_log=[];
 var Opponentindex=0;
 var CurrMove="None";
+
+
+//Telling the user who is the current player
+function Switch(){
+    document.getElementById("switch").innerText = "Current Player: Computer";
+}
+setInterval(function(){
+    document.getElementById("switch").innerText = "Current Player: User";
+;}
+,4000);
 
 
 //Adding to keep quiet counter
