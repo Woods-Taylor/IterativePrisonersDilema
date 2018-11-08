@@ -130,14 +130,15 @@ function Switch(){
 	document.getElementByID("demo").disabled=True;
 	document.getElementByID("demo3").disabled=True;
 	document.getElementByID("demo4").disabled=True;
+	setTimeout(Switch2,4000);
 }
-setInterval(function(){
+function() Switch2{
     document.getElementById("switch").innerText = "Current Player: User";
 	document.getElementByID("demo").disabled=False;
 	document.getElementByID("demo3").disabled=False;
 	document.getElementByID("demo4").disabled=False;
-;}
-,4000);
+}
+
 
 
 //Adding to keep quiet counter
