@@ -26,6 +26,15 @@ def game():
     return render_template('prisoners.html',
                            title=title)
 
+<<<<<<< HEAD
+=======
+@app.route('/game1', methods=['GET'])
+def game():
+    title = 'Create the input'
+    return render_template('prisonerspg2.html',
+                           title=title)                           
+
+>>>>>>> parent of f988274... fix
 @app.route('/senddata', methods = ['POST'])
 def post_javascript_data():
     data=request.data
