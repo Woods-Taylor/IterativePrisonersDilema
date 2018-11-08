@@ -27,7 +27,7 @@ def game():
                            title=title)
 
 @app.route('/game1', methods=['GET'])
-def game():
+def game1():
     title = 'Create the input'
     return render_template('prisonerspg2.html',
                            title=title)                           
