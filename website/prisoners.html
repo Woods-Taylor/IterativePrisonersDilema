@@ -60,7 +60,7 @@ hr {
 <!--Header-->
 
 
-<h1 align="center" > Prisoner's Dilemma Number One</h1>
+<h1 align="center" > Prisoner's Dilemma</h1>
 <hr>
 
 
@@ -110,9 +110,6 @@ hr {
 
 
 
-
-
-
 <script>
 //Variables for counter
 var count =0;
@@ -123,7 +120,7 @@ var Opponent_log=[];
 var Opponentindex=0;
 var CurrMove="None";
 var turn="None";
-var turnflag=0; 
+//var turnflag=0; 
 
 //Telling the user who is the current player
 function Switch(){
@@ -147,12 +144,14 @@ function quietDecision(){
 }
 //Adding to confess counter 
 function confessDecision(){
-	if(document.getElementById("switch").innerText == "Current Player: User"{
-		confess=confess+1;
-		document.getElementById("confess1").innerText = "Confess Counter: " + confess;
-		log.push('B');
+	//if(document.getElementById("switch").innerText == "Current Player: User"{
+	confess=confess+1;
+	document.getElementById("confess1").innerText = "Confess Counter: " + confess;
+	log.push('B');
+	//}
+	else{
+	return 0;
 	}
-	
 	
 
 }
