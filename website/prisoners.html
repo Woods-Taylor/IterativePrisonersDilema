@@ -127,16 +127,16 @@ var turn="None";
 //Telling the user who is the current player
 function Switch(){
     document.getElementById("switch").innerText = "Current Player: Computer";
-	document.getElementById("demo").disabled=True;
-	document.getElementById("demo3").disabled=True;
-	document.getElementById("demo4").disabled=True;
+	document.getElementById("demo").disabled=true;
+	document.getElementById("demo3").disabled=true;
+	document.getElementById("demo4").disabled=true;
 	setTimeout(Switch2,4000);
 }
 function Switch2(){
     document.getElementById("switch").innerText = "Current Player: User";
-	document.getElementById("demo").disabled=False;
-	document.getElementById("demo3").disabled=False;
-	document.getElementById("demo4").disabled=False;
+	document.getElementById("demo").disabled=false;
+	document.getElementById("demo3").disabled=false;
+	document.getElementById("demo4").disabled=false;
 }
 
 
