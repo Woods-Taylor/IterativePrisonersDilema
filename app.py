@@ -26,11 +26,11 @@ def game():
     return render_template('prisoners.html',
                            title=title)
 
-#@app.route('/game1', methods=['GET'])
-#def game1():
-#    title = 'Create the input'
-#    return render_template('prisonerspg2.html',
- #                          title=title)                           
+@app.route('/game1', methods=['GET'])
+def game1():
+    title = 'Create the input'
+    return render_template('prisonerspg2.html',
+                          title=title)                           
 
 @app.route('/senddata', methods = ['POST'])
 def post_javascript_data():
